@@ -12,6 +12,8 @@
 #include <fstream>
 #include <vector>
 
+#include "geometry.h"
+
 int main() 
     {
     
