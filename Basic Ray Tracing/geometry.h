@@ -9,7 +9,8 @@
 #ifndef geometry_h
 #define geometry_h
 
-//#define SECURE;
+
+//#define SECURE;   // in case of fire; 🔥
 
 #include <cmath>
 #include <vector>
@@ -49,6 +50,8 @@ template <size_t dimensionNumber, typename typeOfData> struct gVector
 
     };
     
+//------------- Predeclared typenames -------------
+    
 using gVector2i = gVector<2, int>;
 using gVector2f = gVector<2, double>;
 
@@ -57,5 +60,88 @@ using gVector3f = gVector <3, double>;
 
 using gVector4i = gVector <4, int>;
 using gVector4f = gVector <4, double>;
+
+//-------------------------------------------------
+
+template <typename typeOfData> struct gVector <2, typeOfData>
+    {
+    public:
+        gVector(): x ( typeOfData() ), y ( typeOfData() )
+            {
+            }
+            
+        gVector ( typeOfData x, typeOfData y ): x ( x ), y ( y )
+            {
+            }
+        
+        typeOfData x, y;
+        
+        typeOfData& operator[] ( const size_t dimensionId )
+            {
+            #ifdef SECURE
+                assert ( dimensionId < dimensionNumber );
+            #endif
+            
+            return ( dimensionId == 0 )? x : y;
+            }
+            
+        const typeOfData& operator[] ( const size_t dimensionId ) const
+            {
+            #ifdef SECURE
+                assert ( dimensionId < dimensionNumber );
+            #endif
+            
+            return ( dimensionId == 0 )? x : y;
+            }
+            
+    private:
+        const int dimensionNumber = 2;
+    
+    };
+    
+    
+template <typename typeOfData> struct gVector <3, typeOfData>
+    {
+    public:
+        gVector(): x ( typeOfData() ), y ( typeOfData() ), z ( typeOfData() )
+            {
+            }
+            
+        gVector ( typeOfData x, typeOfData y, typeOfData z ): x ( x ), y ( y ), z ( z )
+            {
+            }
+        
+        typeOfData x, y, z;
+        
+        typeOfData& operator[] ( const size_t dimensionId )
+            {
+            #ifdef SECURE
+                assert ( dimensionId < dimensionNumber );
+            #endif
+            
+            return ( dimensionId == 0 )? x : ( ( dimensionId == 1 )? y : z );
+            }
+            
+        const typeOfData& operator[] ( const size_t dimensionId ) const
+            {
+            #ifdef SECURE
+                assert ( dimensionId < dimensionNumber );
+            #endif
+            
+            return ( dimensionId == 0 )? x : ( ( dimensionId == 1 )? y : z );
+            }
+            
+        double normal()
+            {
+            return std::sqrt ( ( x * x ) + ( y * y ) + ( z * z ) );
+            }
+            
+    private:
+        const int dimensionNumber = 3;
+    
+    };
+
+
+
 
 #endif /* geometry_h */
