@@ -46,8 +46,16 @@ template <size_t dimensionNumber, typename typeOfData> struct gVector
     
     private:
         typeOfData data [ dimensionNumber ]{}; 
-    
-    
+
     };
+    
+using gVector2i = gVector<2, int>;
+using gVector2f = gVector<2, double>;
+
+using gVector3i = gVector <3, int>;
+using gVector3f = gVector <3, double>;
+
+using gVector4i = gVector <4, int>;
+using gVector4f = gVector <4, double>;
 
 #endif /* geometry_h */

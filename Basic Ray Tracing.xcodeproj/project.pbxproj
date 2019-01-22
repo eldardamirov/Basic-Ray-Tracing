@@ -241,6 +241,7 @@
 		868210B421F77D7400C0DE81 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AUWER2S3N2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -250,6 +251,7 @@
 		868210B521F77D7400C0DE81 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AUWER2S3N2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
