@@ -18,7 +18,6 @@
 #include <iostream>
 
 
-
 template <size_t dimensionNumber, typename typeOfData> struct gVector 
     {
     public:
@@ -44,7 +43,18 @@ template <size_t dimensionNumber, typename typeOfData> struct gVector
             
             return data [ dimensionId ];
             }
-    
+            
+//        gVector <dimensionNumber, typeOfData>& operator = ( const gVector <dimensionNumber, typeOfData>& rhs )
+//            {
+//            return *this;
+//            }
+         gVector <dimensionNumber, typeOfData>& operator = ( const gVector <dimensionNumber, typeOfData>& rhs )
+            {
+            for ( size_t i = 0; i < dimensionNumber; ( *this [ i ] = rhs [ i ] ) );
+            
+            return *this;
+            }
+        
     private:
         typeOfData data [ dimensionNumber ]{}; 
 
@@ -52,8 +62,8 @@ template <size_t dimensionNumber, typename typeOfData> struct gVector
     
 //------------- Predeclared typenames -------------
     
-using gVector2i = gVector<2, int>;
-using gVector2f = gVector<2, double>;
+using gVector2i = gVector <2, int>;
+using gVector2f = gVector <2, double>;
 
 using gVector3i = gVector <3, int>;
 using gVector3f = gVector <3, double>;
@@ -76,7 +86,7 @@ template <typename typeOfData> struct gVector <2, typeOfData>
         
         typeOfData x, y;
         
-        typeOfData& operator[] ( const size_t dimensionId )
+        typeOfData& operator [] ( const size_t dimensionId )
             {
             #ifdef SECURE
                 assert ( dimensionId < dimensionNumber );
@@ -85,7 +95,7 @@ template <typename typeOfData> struct gVector <2, typeOfData>
             return ( dimensionId == 0 )? x : y;
             }
             
-        const typeOfData& operator[] ( const size_t dimensionId ) const
+        const typeOfData& operator [] ( const size_t dimensionId ) const
             {
             #ifdef SECURE
                 assert ( dimensionId < dimensionNumber );
@@ -113,7 +123,7 @@ template <typename typeOfData> struct gVector <3, typeOfData>
         
         typeOfData x, y, z;
         
-        typeOfData& operator[] ( const size_t dimensionId )
+        typeOfData& operator [] ( const size_t dimensionId )
             {
             #ifdef SECURE
                 assert ( dimensionId < dimensionNumber );
@@ -122,7 +132,7 @@ template <typename typeOfData> struct gVector <3, typeOfData>
             return ( dimensionId == 0 )? x : ( ( dimensionId == 1 )? y : z );
             }
             
-        const typeOfData& operator[] ( const size_t dimensionId ) const
+        const typeOfData& operator [] ( const size_t dimensionId ) const
             {
             #ifdef SECURE
                 assert ( dimensionId < dimensionNumber );
@@ -171,14 +181,14 @@ template <size_t dimensionNumber, typename typeOfData> gVector <dimensionNumber,
     return lhs;
     }
     
-template<size_t dimensionNumber,typename typeOfData>gVector<dimensionNumber,typeOfData> operator - ( gVector <dimensionNumber,typeOfData> lhs, const gVector <dimensionNumber, typeOfData>& rhs ) 
+template<size_t dimensionNumber,typename typeOfData>gVector<dimensionNumber, typeOfData> operator - ( gVector <dimensionNumber, typeOfData> lhs, const gVector <dimensionNumber, typeOfData>& rhs ) 
     {
     for ( size_t i = dimensionNumber; i--; ( lhs [ i ] -= rhs [ i ] ) );
     
     return lhs;
     }
     
-template<size_t dimensionNumber,typename typeOfData,typename U> gVector<dimensionNumber,typeOfData> operator * ( const gVector <dimensionNumber, typeOfData> &lhs, const U& rhs ) 
+template <size_t dimensionNumber, typename typeOfData, typename U> gVector <dimensionNumber, typeOfData> operator * ( const gVector <dimensionNumber, typeOfData> &lhs, const U& rhs ) 
     {
     gVector <dimensionNumber, typeOfData> ret;
     for ( size_t i = dimensionNumber; i--; ret [ i ] = ( lhs [ i ] * rhs ) );
@@ -186,14 +196,14 @@ template<size_t dimensionNumber,typename typeOfData,typename U> gVector<dimensio
     return ret;
     }
     
-template<size_t dimensionNumber,typename typeOfData> gVector<dimensionNumber,typeOfData> operator - ( const gVector<dimensionNumber,typeOfData> &lhs ) 
+template <size_t dimensionNumber, typename typeOfData> gVector <dimensionNumber, typeOfData> operator - ( const gVector <dimensionNumber, typeOfData> &lhs ) 
     {
     return lhs * typeOfData ( -1 );
     }
     
 template <typename typeOfData> gVector <3, typeOfData> cross ( gVector <3, typeOfData> v1, gVector <3, typeOfData> v2) 
     {
-    return gVector <3, typeOfData> ( ( ( v1.y * v2.z ) - v1.z*v2.y ), ( ( v1.z * v2.x ) - ( v1.x * v2.z ) ), ( ( v1.x * v2.y ) - ( v1.y * v2.x ) ) );
+    return gVector <3, typeOfData> ( ( ( v1.y * v2.z ) - ( v1.z * v2.y ) ), ( ( v1.z * v2.x ) - ( v1.x * v2.z ) ), ( ( v1.x * v2.y ) - ( v1.y * v2.x ) ) );
     }
     
 template <size_t dimensionNumber, typename typeOfData> std::ostream& operator << ( std::ostream& out, const gVector <dimensionNumber, typeOfData>& v ) 
@@ -204,6 +214,13 @@ template <size_t dimensionNumber, typename typeOfData> std::ostream& operator <<
         }
     return out;
     }
+    
+//template <size_t dimensionNumber, typename typeOfData> gVector <dimensionNumber, typeOfData>& operator = ( const gVector <dimensionNumber, typeOfData>& lhs, const gVector <dimensionNumber, typeOfData>& rhs )
+//    {
+//    for ( size_t i = 0; i < dimensionNumber; ( lhs [ i ] = rhs [ i ] ) );
+//    
+//    return lhs;
+//    }
 
 
 
