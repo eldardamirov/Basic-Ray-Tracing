@@ -146,7 +146,64 @@ template <typename typeOfData> struct gVector <3, typeOfData>
         const int dimensionNumber = 3;
     
     };
+    
+//template <typename typeOfData> gVector <4, typeOfData> struct 
+//    {
+//  
+//
+//    public:
+//  
+//    };
 
+
+template <size_t dimensionNumber, typename typeOfData> typeOfData operator * (const gVector <dimensionNumber, typeOfData>& lhs, const gVector <dimensionNumber, typeOfData>& rhs) 
+    {
+    typeOfData ret = typeOfData();
+    for (size_t i = dimensionNumber; i--; ( ret += lhs [ i ] * rhs [ i ] ) );
+    
+    return ret;
+    }
+    
+template <size_t dimensionNumber, typename typeOfData> gVector <dimensionNumber, typeOfData> operator + ( gVector <dimensionNumber, typeOfData> lhs, const gVector <dimensionNumber, typeOfData>& rhs ) 
+    {
+    for ( size_t i = dimensionNumber; i--; ( lhs [ i ] += rhs [ i ] ) );
+    
+    return lhs;
+    }
+    
+template<size_t dimensionNumber,typename typeOfData>gVector<dimensionNumber,typeOfData> operator - ( gVector <dimensionNumber,typeOfData> lhs, const gVector <dimensionNumber, typeOfData>& rhs ) 
+    {
+    for ( size_t i = dimensionNumber; i--; ( lhs [ i ] -= rhs [ i ] ) );
+    
+    return lhs;
+    }
+    
+template<size_t dimensionNumber,typename typeOfData,typename U> gVector<dimensionNumber,typeOfData> operator * ( const gVector <dimensionNumber, typeOfData> &lhs, const U& rhs ) 
+    {
+    gVector <dimensionNumber, typeOfData> ret;
+    for ( size_t i = dimensionNumber; i--; ret [ i ] = ( lhs [ i ] * rhs ) );
+    
+    return ret;
+    }
+    
+template<size_t dimensionNumber,typename typeOfData> gVector<dimensionNumber,typeOfData> operator - ( const gVector<dimensionNumber,typeOfData> &lhs ) 
+    {
+    return lhs * typeOfData ( -1 );
+    }
+    
+template <typename typeOfData> gVector <3, typeOfData> cross ( gVector <3, typeOfData> v1, gVector <3, typeOfData> v2) 
+    {
+    return gVector <3, typeOfData> ( ( ( v1.y * v2.z ) - v1.z*v2.y ), ( ( v1.z * v2.x ) - ( v1.x * v2.z ) ), ( ( v1.x * v2.y ) - ( v1.y * v2.x ) ) );
+    }
+    
+template <size_t dimensionNumber, typename typeOfData> std::ostream& operator << ( std::ostream& out, const gVector <dimensionNumber, typeOfData>& v ) 
+    {
+    for ( unsigned int i = 0; i < dimensionNumber; i++ ) 
+        {
+        out << v [ i ] << " ";
+        }
+    return out;
+    }
 
 
 
