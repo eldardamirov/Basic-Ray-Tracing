@@ -136,6 +136,12 @@ template <typename typeOfData> struct gVector <3, typeOfData>
             return std::sqrt ( ( x * x ) + ( y * y ) + ( z * z ) );
             }
             
+        gVector <3, typeOfData>& normalize ( typeOfData length = 1 ) 
+            {
+            *this = ( *this ) * ( length / normal() );
+            return *this;
+            }
+            
     private:
         const int dimensionNumber = 3;
     
