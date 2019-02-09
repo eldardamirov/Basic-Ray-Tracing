@@ -20,7 +20,7 @@ struct Sphere
         }
     
     
-    bool areRayIntersecting ( const Vec3f& origin, const Vec3f& direction, float& t0 ) // from point origin in "direction" direction;
+    bool areRayIntersecting ( const Vec3f& origin, const Vec3f& direction, float& t0 ) const // from point origin in "direction" direction;
         {
         Vec3f L = center - origin;
         float touching = L * direction;

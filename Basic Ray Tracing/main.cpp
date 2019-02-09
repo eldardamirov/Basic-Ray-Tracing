@@ -11,6 +11,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <limits>
 
 #include "geometry.h"
 #include "basicFigures.h"
@@ -18,8 +19,9 @@
 
 int main() 
     {
-    
-    render();
+    Sphere mySphere = Sphere ( Vec3f ( 0.0, 100, 50 ), 1 );
+    render ( mySphere );
+//    render();
     
     return 0;
     }
