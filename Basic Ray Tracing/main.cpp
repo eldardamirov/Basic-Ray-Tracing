@@ -13,6 +13,7 @@
 #include <vector>
 
 #include "geometry.h"
+#include "basicFigures.h"
 #include "render.h"
 
 int main() 
