@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		863A51E921F7821C00870063 /* geometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = geometry.h; sourceTree = "<group>"; };
 		863A51EA21FCF9D000870063 /* render.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = render.h; sourceTree = "<group>"; };
+		86794117220F6B060049B363 /* basicFigures.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = basicFigures.h; sourceTree = "<group>"; };
 		868210AC21F77D7400C0DE81 /* Basic Ray Tracing */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Basic Ray Tracing"; sourceTree = BUILT_PRODUCTS_DIR; };
 		868210AF21F77D7400C0DE81 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,6 +63,7 @@
 				868210AF21F77D7400C0DE81 /* main.cpp */,
 				863A51EA21FCF9D000870063 /* render.h */,
 				863A51E921F7821C00870063 /* geometry.h */,
+				86794117220F6B060049B363 /* basicFigures.h */,
 			);
 			path = "Basic Ray Tracing";
 			sourceTree = "<group>";

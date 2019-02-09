@@ -44,7 +44,7 @@ void render()
         {
         for ( size_t currentX = 0; currentX < width; currentX++ )
             {
-            frameBuffer [ currentY + ( currentX * width ) ] = Vec3f ( ( currentY / static_cast <double> ( height ) ), ( currentX / static_cast <double> ( width ) ), 0 );
+            frameBuffer [ currentY + ( currentY * width ) ] = Vec3f ( ( currentY / static_cast <double> ( height ) ), ( currentX / static_cast <double> ( width ) ), 0 );
             }
         }
         
