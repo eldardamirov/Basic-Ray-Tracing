@@ -56,7 +56,7 @@ void render()
         {
         for ( size_t currentX = 0; currentX < width; currentX++ )
             {
-            frameBuffer [ currentY + ( currentY * width ) ] = Vec3f ( ( currentY / static_cast <double> ( height ) ), ( currentX / static_cast <double> ( width ) ), 0 );
+            frameBuffer [ currentX + ( currentY * width ) ] = Vec3f ( ( currentY / static_cast <double> ( height ) ), ( currentX / static_cast <double> ( width ) ), 0 );
             }
         }
         
@@ -75,8 +75,9 @@ void render()
     outputStream.close();
     }
     
+   
 
-void render ( const Sphere& sphere, const float visionAngle = M_PI * 4 )
+void render ( const Sphere& sphere, const float visionAngle = M_PI / 2 )
     {
     std::vector <Vec3f> frameBuffer ( width * height );
     
