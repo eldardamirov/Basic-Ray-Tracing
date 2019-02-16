@@ -19,9 +19,9 @@
 
 int main() 
     {
-//    Sphere mySphere = Sphere ( Vec3f ( 50, 100, 50 ), 40 );
-//    render ( mySphere );
-    render();
+    Sphere mySphere = Sphere ( Vec3f ( 512, 384, 10 ), 100 );
+    render ( mySphere );
+//    render();
     
     return 0;
     }
